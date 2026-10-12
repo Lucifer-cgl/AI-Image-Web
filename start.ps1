@@ -6,13 +6,11 @@ param(
 $ErrorActionPreference = 'Stop'
 if (-not $ModelPath) {
     $bundled = Join-Path $PSScriptRoot 'models\dreamshaper-8-fp16'
-    $shared = 'E:\AI-Models\image\dreamshaper-8-fp16'
-    $ModelPath = if (Test-Path -LiteralPath (Join-Path $bundled 'model_index.json')) { $bundled } elseif (Test-Path -LiteralPath (Join-Path $shared 'model_index.json')) { $shared } else { $bundled }
+    $ModelPath = $bundled
 }
 if (-not $TranslatorPath) {
     $bundledTranslator = Join-Path $PSScriptRoot 'models\opus-mt-zh-en'
-    $sharedTranslator = 'E:\AI-Models\translation\opus-mt-zh-en'
-    $TranslatorPath = if (Test-Path -LiteralPath (Join-Path $bundledTranslator 'config.json')) { $bundledTranslator } elseif (Test-Path -LiteralPath (Join-Path $sharedTranslator 'config.json')) { $sharedTranslator } else { '' }
+    $TranslatorPath = if (Test-Path -LiteralPath (Join-Path $bundledTranslator 'config.json')) { $bundledTranslator } else { '' }
 }
 if (-not (Test-Path -LiteralPath (Join-Path $ModelPath 'model_index.json'))) {
     throw "未找到 DreamShaper 模型：$ModelPath。请先运行 download-model.ps1。"

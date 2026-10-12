@@ -19,8 +19,6 @@ Windows 本地网页图片生成器。双击启动后在浏览器中使用，模
 3. 运行 `download-model.ps1` 下载 DreamShaper 与中文翻译模型附件；脚本优先国内镜像，失败后回退 GitHub。
 4. 双击 `start.ps1`，浏览器会自动打开 `http://127.0.0.1:8091/`。
 
-如果电脑已有 `E:\AI-Models\image\dreamshaper-8-fp16`，`start.ps1` 会直接复用，无需重复下载。
-
 生成图片保存在 `data/history/`。删除网页历史记录会同时删除对应 PNG 和元数据。
 
 ## 接口示例
@@ -37,4 +35,3 @@ Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8091/v1/images/generations 
 ## 许可证
 
 程序代码采用 MIT；DreamShaper 与翻译模型分别沿用其上游 CreativeML Open RAIL-M、CC BY 4.0 许可，参见 [MODEL_LICENSE.md](MODEL_LICENSE.md)。
-
